@@ -1,0 +1,4 @@
+help
+====
+
+GoodHuddle help documentation
