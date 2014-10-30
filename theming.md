@@ -109,6 +109,11 @@ The theme seed project can't be obtained by cloning this repository. The
 theme skeleton is found in the `theme-seed` directory. The theme itself
 is in `theme-seed/src`.
 
+## First steps
+
+1. Edit `site.xml` to add your theme's ID, name and description.
+2. Edit `deploy.sh` (if you eant to use it).
+
 ## Getting the needed components
 
 The mandatory components can be automatically download with bower.
@@ -144,3 +149,7 @@ That way you can view your huddle and simply refresh a page
 whenever you want to check the progress of your theme, without needed in 
 re-install the theme each time.
 
+## Deploying
+
+The is a `deploy.sh` script that may or may not be of use. **It must be  edited
+before use**.  It will build and deploy your theme in one easy step.
