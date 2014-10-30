@@ -153,8 +153,8 @@ re-install the theme each time.
 
 Once your theme is complete, you should take a screenshot that will be be
 used as a thumbnail in the final package. One nice way to do this 
-is to use Chrome developer tools emulate a device with a 1024x768 
-screen width, take a screenshot, crop it and resize it to 460 x 290px.
+is to use Chrome developer tools to emulate a device with a 1024x768 px 
+screen, take a screenshot, crop it and resize it to 460 x 290px.
 
 The is a `deploy.sh` script that may or may not be of use. **It must be  edited
 before use**.  It will build and deploy your theme in one easy step.
