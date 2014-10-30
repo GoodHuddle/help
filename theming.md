@@ -6,6 +6,9 @@ Themes are used give GoodHuddle site a distinct look and feel. Custom themes
 can be produced and added to a GoodHuddle instance's library to allow huddle
 admins to change their huddle's theme.
 
+GoodHuddle's layout and stylings are based on Bootstrap, and templating uses
+Handlebars.
+
 ### The theme package file structure
 
 Themes packaged into ZIP archives containing a `site.xml` configuration file,
@@ -99,3 +102,45 @@ total 368K
 -rw-r--r-- 1 huddler dan 301K Oct 16 22:22 theme.zip
 -rw-r--r-- 1 huddler dan  51K Oct 16 22:22 thumbnail.jpg
 ```
+
+# Using the theme 'seed'
+
+The theme seed project can't be obtained by cloning this repository. The
+theme skeleton is found in the `theme-seed` directory. The theme itself
+is in `theme-seed/src`.
+
+## Getting the needed components
+
+The mandatory components can be automatically download with bower.
+
+1. Make sure `bower` is installed. It's easiest to install `node.js`
+and run `npm install -g bower`.
+2. In `src` run `bower install`.
+
+## Customising Bootstrap
+
+The seed project supports creating a custom version of bootstrap.css by
+editing the `variables.less` file and running the `rebuild_bootstrap.sh`
+script from within the `src` directory. **Before you do that** however, make
+sure the Bootstrap build system in installed by following the instructions
+in `src/README.md`.
+
+Customising bootstrap is optional, but if you  don't set it up you will have 
+to modify the `build.sh` convenience script to remove that step.
+
+## Editing templates, CSS, etc.
+
+Edit the `.hbs` files (under `layouts`), `variables.less` and `resources/css/theme.css` as required to create your theme. Also add any
+extra Javascript files under `resources/js`. Ensure they are all linked
+in `default-layout.hbs`.
+
+A good workflow if you have a local GoodHuddle instance installed is to 
+initially install the theme early on, and then in your huddle's area under 
+`gh-data/themes` remove the installed theme's directory (this
+directory's name will numeric, like `5` &mdash; pick the highest number 
+and that will be the current theme)  and symlink your development `src` 
+directory there instead (with the same numeric name).
+That way you can view your huddle and simply refresh a page 
+whenever you want to check the progress of your theme, without needed in 
+re-install the theme each time.
+
