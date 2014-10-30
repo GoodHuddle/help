@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{#section "head"}}
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{{#section "title"}}{{huddle.name}}{{/section}}</title>
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic" rel="stylesheet" type="text/css">
+    <link href="/resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  {{/section}}
+  <link href="/resources/css/theme.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>{{huddle.name}}</h1>
+  </div>
+</div>
+
+<div class="main-nav" role="navigation">
+  <div class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          {{#each menu.items}}
+              {{#if items}}
+                <li class="nav-item {{#if selected}}active{{/if}} dropdown">
+                  <a href="{{url}}" class="dropdown-toggle" data-hover="dropdown" data-delay="0" data-close-others="false">
+                    {{label}} <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    {{#each items}}
+                      <li>
+                        <a href="{{url}}">{{label}}</a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                </li>
+              {{else}}
+                <li class="nav-item {{#if selected}}active{{/if}}">
+                  <a href="{{url}}">{{label}}</a>
+                </li>
+              {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body-content container">
+  {{#section "content"}}
+    No page content
+  {{/section}}
+</div>
+
+<footer class="footer">
+  <div class="container text-center newsletter">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+        <h3>Join our mailing list</h3>
+        <p>Subscribe to get our weekly newsletter delivered directly to your inbox</p>
+        <form class="form subscribe-form" action="/member/join" method="POST">
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Enter your email">
+          </div>
+          <input class="btn btn-theme btn-subscribe" type="submit" value="Subscribe">
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="bottom-bar text-center">
+  <div class="copyright">
+    <small>
+      Powered by <a href="https://goodhuddle.com">GoodHuddle</a>
+    </small>
+  </div>
+</div>
+
+{{#section "scripts"}}
+  <script src="/lib/jquery-1.11.1/jquery-1.11.1.min.js"></script>
+  <script src="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+{{/section}}
+
+</body>
+</html>
+

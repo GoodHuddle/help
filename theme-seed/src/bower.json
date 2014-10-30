@@ -1,0 +1,20 @@
+{
+  "name": "GOH Theme 1",
+  "version": "0.0.0",
+  "authors": [
+    "Sam Stainsby <sam@stainsby.id.au>"
+  ],
+  "license": "proprietary",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.1",
+    "bootstrap": "3.2.0"
+  }
+}

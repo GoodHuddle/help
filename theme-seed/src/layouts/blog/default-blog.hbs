@@ -1,0 +1,67 @@
+{{#extend "default-layout"}}
+
+    {{#prepend "title"}}{{blog.title}} - {{/prepend}}
+
+    {{#replace "pageTitle"}}{{blog.title}}{{/replace}}
+
+    {{#replace "content"}}
+
+        <div class="news">
+            <div class="page-heading">
+                <h1 class="heading-title">{{blog.title}}</h1>
+            </div>
+
+            {{#each blogPosts}}
+
+                <article class="news-item page-row has-divider clearfix row">
+                    {{#if featureImageUrl}}
+                        <figure class="thumb col-md-2 col-sm-3 col-xs-4">
+                            <img class="img-responsive" src="{{featureImageUrl}}"/>
+                        </figure>
+                    {{/if}}
+                    <div class="details col-md-10 col-sm-9 col-xs-8">
+
+                        <h3 class="title">
+                            <a href="{{url}}">{{title}}</a>
+                        </h3>
+
+                        <p>{{blurb}}</p>
+
+                        {{#if published}}
+                            <div class="post-meta-info pull-right">
+                                Published {{datetime publishedOn}} by {{memberLink author}}
+                            </div>
+                        {{/if}}
+
+                        <a class="btn btn-theme read-more" href="{{url}}">Read more <i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </article>
+            {{/each}}
+
+            <div class="blog-nav">
+
+                {{#unless blogPosts.first}}
+                    <div class="newer">
+                        <a href="{{blog.url}}?page={{plus blogPosts.number -1}}">
+                            <i class="fa fa-arrow-left"></i> Newer posts
+                        </a>
+                    </div>
+                {{/unless}}
+
+                {{#unless blogPosts.last}}
+                    <div class="older">
+                        <a href="{{blog.url}}?page={{plus blogPosts.number 1}}">
+                            Older posts <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                {{/unless}}
+
+            </div>
+        </div>
+
+    {{/replace}}
+
+{{/extend}}
+
+
+

@@ -1,0 +1,37 @@
+{{#extend "default-layout"}}
+  
+  {{#prepend "title"}}{{blogPost.title}} - {{/prepend}}
+  
+  {{#append "head"}}
+    <link href="/css/default-blog-styles.css" rel="stylesheet"/>
+    <link href="/css/default-block-styles.css" rel="stylesheet"/>
+  {{/append}}
+  
+  {{#replace "pageTitle"}}{{blog.title}}{{/replace}}
+  
+  {{#replace "content"}}
+      <div class="page-heading">
+        <h1 class="heading-title">{{blogPost.title}}</h1>
+      </div>
+      <div class="blog-post-info">
+        <p class="meta text-muted">By: {{memberLink blogPost.author}} | Posted on: {{datetime blogPost.publishedOn}}</p>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <div class="blog-post-content">
+            {{#with blogPost.content}}
+              {{> content/content}}
+            {{/with}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          {{#if blogPost.featureImageUrl}}
+            <img class="img-responsive" src="{{blogPost.featureImageUrl}}"/>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/replace}}
+  
+{{/extend}}
