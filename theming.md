@@ -195,12 +195,32 @@ screen, take a screenshot, crop it and resize it to *460 x 290px*.
 
 Save this thumbnail as `thumbnail.png` into the base directory of your theme's ZIP file (i.e. alongside `site.xml`).
 
+## Testing a theme locally
+
+Building a theme is often an iterative proces. You want to make some changes, see how they look and then make some more changes. This can be a slow process if you have to ZIP and upload your theme each time. To make things quicker and easier, you can instead download and install the Huddle Theme SDK and use this to run your own test on your local computer. 
+
+The steps for this are currently a little bit complex, but if you are editing a theme often, it is worth the investment of time:
+
+0. Download and install Java from http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+2. Download the latest release of the GoodHuddle Theme SDK from http://tools.goodhuddle.com/release/huddle-theme-sdk/latest/
+3. Unzip the huddle SDK to a directory of your choosing
+4. To start your local test Huddle from the command line run ``launch.bat`` (on Windows) or ``launch.sh`` (on Linux or Mac) 
+5. You should see log messages in your console that should end with something like: 
+```
+2014-11-03 15:22:54.802  INFO 19135 --- [           main] .s.b.c.e.j.JettyEmbeddedServletContainer : Jetty started on port: 8080
+2014-11-03 15:22:54.805  INFO 19135 --- [           main] com.goodhuddle.huddle.HuddleApplication  : Started HuddleApplication in 18.099 seconds (JVM running for 18.806)
+```
+6. You should now be open a web browser to http://localhost:8080 to see your running huddle. 
+
+When the theme SDK was unzipped it will have included a directory called ``theme``. By default this contains the ``seed`` starter theme. Edit this theme and any files within the ``theme``directory to create your custom look. Any changes you make should be instantly visible in your running theme, simply save the file and refresh the browser. 
 
 ## Uploading a theme
 
-Installing your theme is a simple matter of zipping up your theme files and then uploading them to your Huddle. To zip your theme files you can use any zip program you like, including [WinZip](http://www.winzip.com/) or [7-Zip](http://www.7-zip.org/). Make sure you zip such that ``site.xml`` and ``thumbnail.png`` are in the base folder of your theme.
+Once you are happy with your theme, you can upload it to your Huddle. To do this simply ZIP your theme files into a single package and then use your Huddle's admin portal to upload the theme.   
 
-On Mac, you can use the following command line call from within the base directory of your theme:
+To zip up your theme files, you can use any zip program you like, including [WinZip](http://www.winzip.com/) or [7-Zip](http://www.7-zip.org/). Make sure you zip your files in such a way that ``site.xml`` and ``thumbnail.png`` are in the base folder of your theme.
+
+On Mac, a command line zip tool comes installed by default. Use the following command line call from within the base directory of your theme:
 
 ```sh
 zip -r theme.zip .
