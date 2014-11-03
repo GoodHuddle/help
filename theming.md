@@ -60,22 +60,71 @@ Most of this is a bare bones HTML file. The bits of code inside the `{{ }}` bloc
 
 The `{{section "head"}}` tells GoodHuddle that this is the 'head' of the HTML file. GoodHuddle will add extra bits to this section (such as additional stylesheets the huddle needs) when this theme is used inside a Huddle. 
 
-Inside the "head" section, this theme includes a link to the default Bootstrap CSS stylesheet. Every huddle must include a link to Bootstrap for the pages to layout properly. You can either use this link, which points to the default, built-in version of Bootstrap provided by GoodHuddle, or you can include your own version inside the `resources` directory of your theme and reference that instead. 
+The "head" section includes a `<title>` element. You could hard code the name of your Huddle into this, however, just to demonstrate one of GoodHuddle's features, we've used the dynamic reference to `{{huddle.name}}`. When this theme is used inside a Huddle, that dynamic reference will be replaced with the name of the Huddle. If the users want to change the name, they simply edit their Huddle settings online instead of digging into the theme code. 
+
+Also inside the "head" section, this includes a link to the default Bootstrap CSS stylesheet. Every huddle must include a link to Bootstrap for the pages to layout properly. You can either use this link, which points to the default, built-in version of Bootstrap provided by GoodHuddle, or you can include your own version inside the `resources` directory of your theme and reference that instead. 
 
 The `{{section "content"}}` tells GoodHuddle where to put the page content. Everything between `{{section "content"}}` and `{{\section}}` will be replaced by the real content of the page when a person navigates to that page in the huddle. For example, a Huddle's 'home' page might replace this with a welcome message, whereas the 'about us' page might replace this with information about the people running the huddle.
 
 The `{{section "scripts"}}` is similar to the "head" section. It tells GoodHuddle that this is where custom JavaScript links should be added to the theme. GoodHuddle will append it's own links to the ones in your theme as needed. 
 
-This basic theme includes two links to built in JavaScript files. One is for JQuery and one is for Bootstrap. Each theme must include both of these libraries. Again, either the built in Huddle versions of these libraries can be used (as in this example), or you can include your own versiosn in the `/resources` directory and change these links to reference those instead.  
-There's really nothing more to layout files than that. You can take that example layout file and add as much HTML as you like. Move the content around, add a banner image up the top, change it however you like. 
+This basic theme includes two links to built in JavaScript files. One is for JQuery and one is for Bootstrap. Each theme must include both of these libraries. Again, either the built in Huddle versions of these libraries can be used (as in this example), or you can include your own versiosn in the `/resources` directory and change these links to reference those instead.
+
+There's really nothing more to layout files than that. You can take this example layout file and add as much HTML as you like. Move the content around, add a banner image up the top, change it however you like. 
 
 ## Including dynamic menus
 
-todo
+Menus can be easily added as static HTML to your theme. For example you could edit our basic theme file above to look something like this: 
+
+```html
+<html>	
+    ...
+    <body>
+        <!-- include a static menu -->
+        <ul> 
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        
+        {{#section "content"}}
+            Page content will go here
+        {{/section}}
+        ...
+    </body>	
+</html>
+```
+
+This kind of static menu is simple but it isn't very dynamic. If someone adds a new page, they will need to edit your theme. We want to avoid average users from getting into technical theme building stuff, so a better approach is to make your theme handle dynamic menus. 
+
+GoodHuddle provides some predefined variables for creating menus dynamically from the Huddle's existing pages. This is how we would write the above code as a dynamic menu: 
+
+```html
+<html>	
+    ...
+    <body>
+        <!-- include a static menu -->
+        <ul> 
+            {{#each menu.items}}
+                <li><a href="{{url}}">{{label}}</a></li>
+            {{/each}}
+        </ul>
+        
+        {{#section "content"}}
+            Page content will go here
+        {{/section}}
+        ...
+    </body>	
+</html>
+```
+
+Now a new menu link will be dynamically generated for each page in the Huddle. The users can edit their menu directly through their Huddle admin panel without needing to change any theme code. 
+
+Menus can get more complicated than this. Many themes will want dynamic, multi-level menus that popup on mouseover and highlight the selected menu item. This is all possible in GoodHuddle - you can make your menu use whatever structure you like. We will create more detailed tutorials on all this but for now check out some of the existing themes for ways to do this. 
 
 ## Additional layouts
 
-The `default-layout.hbs` file is the only layout you need to provide. More advanced themes can optionally include more HTML layouts to override the default GoodHuddle ones. If you don't provide an ovveride, GoodHuddle provides defaults that look fine in most cases. 
+The `default-layout.hbs` file is the only layout you need to provide. More advanced themes can optionally include more HTML layouts to override the default GoodHuddle ones. If you don't provide an override, GoodHuddle provides defaults that look fine in most cases. 
 
 To override additional layouts simply include them in the ZIP bundle in the appropriate place under `layouts`. For example these are some of the common layouts for blog posts that themes often choose to override:
 
