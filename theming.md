@@ -195,23 +195,6 @@ screen, take a screenshot, crop it and resize it to *460 x 290px*.
 
 Save this thumbnail as `thumbnail.png` into the base directory of your theme's ZIP file (i.e. alongside `site.xml`).
 
-## Testing a theme locally
-
-Building a theme is often an iterative proces. You want to make some changes, see how they look and then make some more changes. This can be a slow process if you have to ZIP and upload your theme each time. To make things quicker and easier, you can instead download and install the Huddle Theme SDK and use this to run your own test on your local computer. 
-
-The steps for this are currently a little bit complex, but if you are editing a theme often, it is worth the investment of time:
-
-0. Install Java from [http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]()
-0. Install PostgreSQL from [http://www.postgresql.org/]()
-0. Download the latest release of the GoodHuddle from [http://tools.goodhuddle.com/release/huddle/latest/huddle.jar]()
-0. In PostgreSQL create a new user called 'huddle' with password 'huddle' 
-0. Start your local huddle by running ``java -jar huddle.jar`` from the command line
-0. Open a web browser to [http://localhost:8080]() and fill in the setup form.
-0. Log into the [Admin Console](http://localhost:8080/admin) and step through the setup wizard. Choose any theme as a starting point, it doesn't matter.
-0. The theme you chose will have been installed in ``gh-data/theme/1`` - use this folder as your working directory for your theme. Copy your own theme files into this directory and edit as needed. 
-0. Check your theme during the editing process by refreshing your browser [http://localhost:8080]().
-0. When you are happy with your theme, make sure the ``site.xml`` and ``thumbnail.jpg`` are both how you want them, and then zip up this theme folder so it is ready to upload. 
-
 ## Uploading a theme
 
 Once you are happy with your theme, you can upload it to your Huddle. To do this simply ZIP your theme files into a single package and then use your Huddle's admin portal to upload the theme.   
