@@ -25,15 +25,6 @@ The `default-layout.hbs` file is the base layout for your theme. This a HTML tem
 
 The `.hbs` extension is just to indicate this layout uses Handlebars. We'll explain more about this below. 
 
-## Using the `seed` theme
-
-The theme seed project can be obtained by cloning this repository. The
-theme skeleton is found in the `theme-seed` directory. The theme itself
-is in `theme-seed/src`.
-
--- more on this coming soon --
-
-
 ## Creating the `default-layout.hbs` file
 
 The `default-layout.hbs` file is the core of your theme. It is really just a standard HTML file with a little bit of custom markup added to it to let GoodHuddle know how to use it.
@@ -211,6 +202,11 @@ You can then upload the resulting ``theme.zip`` to you Huddle. If you haven't al
 
 If you already have your Huddle, login into your admin portal (you should have been emailed information on how to login when you signed up). Once logged in, navigate to the ``website`` section and choose ``Change Theme`` and then ``Upload``. Use the file chooser to select your zip file and your new theme will be instantly activated.  
 
+## Using a `seed` theme
+
+While you can create a theme from scratch using the steps above, it is ofte easier just to copy an existing theme and then tweak it to match your style. A simple starter theme you can use for this is the SimpleBlueTheme: [https://github.com/GoodHuddle/SimpleBlueTheme]().
+
+You can download a copy of this theme from GitHub by clicking the 'Download Zip' button (bottom right of the screen) on the link above. Extract it to a local directory on your computer and edit, add and delete the included files to customise the theme however you want. Make sure you remember to edit the `site.xml` file to give it a unique ID different to `simpleblue`.
 
 ## Contributing your theme back to the GoodHuddle community
 
